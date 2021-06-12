@@ -11,7 +11,22 @@
 <body>
   <main>
     <h1>Vanilla JavaScript App</h1>
+    <p>Loading content from the API: <b id="name">...</b></p>
   </main>
+  <script>
+    (async function() {
+      const response = await window.fetch('/api/message', {
+    // learn more about this API here: https://graphql-pokemon2.vercel.app/
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json;charset=UTF-8',
+    },
+  })
+    console.log(response)
+    const data = await response.text()
+    document.querySelector('#name').textContent = data;
+    }())
+     </script>
 </body>
 
 </html>
